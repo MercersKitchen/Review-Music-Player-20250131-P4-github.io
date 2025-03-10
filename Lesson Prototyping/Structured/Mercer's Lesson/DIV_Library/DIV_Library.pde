@@ -19,19 +19,18 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //
 //Global Variables
-int appWidth, appHeight;
 float musicMenuX, musicMenuY, musicMenuWidth, musicMenuHeight;
 //
 void setup() {
   //Display
   fullScreen();
-  appWidth = displayWidth;
-  appHeight = displayHeight;
+  int appWidth = displayWidth;
+  int appHeight = displayHeight;
   //
-  musicMenuX = displayWidth*1/4;
-  musicMenuY = displayHeight*1/4;
-  musicMenuWidth = displayWidth*1/2;
-  musicMenuHeight = displayHeight*1/2;
+  musicMenuX = appWidth*1/4;
+  musicMenuY = appHeight*1/4;
+  musicMenuWidth = appWidth*1/2;
+  musicMenuHeight = appHeight*1/2;
   //
   //rect(X, Y Width, Height);
   rect(musicMenuX, musicMenuY, musicMenuWidth, musicMenuHeight);

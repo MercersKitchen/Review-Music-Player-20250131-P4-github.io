@@ -11,32 +11,43 @@ int numberOfSongs = 8;
 AudioPlayer[] playList = new AudioPlayer[ numberOfSongs ];
 int currentSong = numberOfSongs - numberOfSongs; //ZERO
 //
-int appWidth, appHeight;
 float musicMenuX, musicMenuY, musicMenuWidth, musicMenuHeight;
 //
 void setup() {
   //Display
   fullScreen();
-  appWidth = displayWidth;
-  appHeight = displayHeight;
+  int appWidth = displayWidth;
+  int appHeight = displayHeight;
   //
-  musicMenuX = displayWidth*1/4;
-  musicMenuY = displayHeight*1/4;
-  musicMenuWidth = displayWidth*1/2;
-  musicMenuHeight = displayHeight*1/2;
+  musicMenuX = appWidth*1/4;
+  musicMenuY = appHeight*1/4;
+  musicMenuWidth = appWidth*1/2;
+  musicMenuHeight = appHeight*1/2;
   //
   //rect(X, Y Width, Height);
   rect(musicMenuX, musicMenuY, musicMenuWidth, musicMenuHeight);
   //
   //Music Loading - STRUCTURED Review
   minim = new Minim(this);
+  //String[] fileName = new String[ numberOfSongs ];
+  //Alternate Reading of Array
   String musicPathway = "Music/";
+  String beatYourCompetition = "Beat_Your_Competition";
+  String cycles = "Cycles";
+  String eureka = "Eureka";
+  String ghostWalk = "Ghost_Walk";
   String groove = "groove";
+  String newsroom = "Newsroom";
+  String startYourEngines = "Start_Your_Engines";
+  String simplest = "The_Simplest";
+  //Add all files, CS20 Review is special OS Java Library
+  //Including the reading of the number of files in the array
   String fileExtension_mp3 = ".mp3";
   //
   String musicDirectory = "../../../../" + musicPathway;
   String file = musicDirectory + groove + fileExtension_mp3; //relative pathway or directory
   println( file );
+  //Create a FOR loop to loadFile() a changing songName
   playList[ currentSong ] = minim.loadfile( file ); //ERROR: Verify Spelling & Library installed, Sketch / Import Library
   //Music Testing
   playList[currentSong].play();
