@@ -1,6 +1,9 @@
-//Dynamic Programming v Static
-//
-//Library - Minim
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
 //
 //Global Variables
 int appWidth, appHeight;
@@ -19,6 +22,18 @@ void setup() {
   //
   //rect(X, Y Width, Height);
   rect(musicMenuX, musicMenuY, musicMenuWidth, musicMenuHeight);
+  //
+  //Music Loading
+  String musicPathway = "Music/";
+  String groove = "groove";
+  String fileExtension_mp3 = ".mp3";
+  //
+  String musicDirectory = "../../../../" + musicPathway;
+  String file = musicDirectory + groove + fileExtension_mp3; //relative pathway or directory
+  println( file );
+  //playList[] = minimn.loadfile( file );
+  //Music Testing
+  
   //
 } //End setup
 //
