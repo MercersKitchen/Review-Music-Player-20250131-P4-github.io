@@ -32,14 +32,9 @@ void setup() {
   //String[] fileName = new String[ numberOfSongs ];
   //Alternate Reading of Array
   String musicPathway = "Music/";
-  String beatYourCompetition = "Beat_Your_Competition";
-  String cycles = "Cycles";
-  String eureka = "Eureka";
-  String ghostWalk = "Ghost_Walk";
+  //Note: Download music and sound effects, then design your player with images, text, and 2D shapes
+  //See Google Search: Atari pong logo free image download
   String groove = "groove";
-  String newsroom = "Newsroom";
-  String startYourEngines = "Start_Your_Engines";
-  String simplest = "The_Simplest";
   //Add all files, CS20 Review is special OS Java Library
   //Including the reading of the number of files in the array
   String fileExtension_mp3 = ".mp3";
@@ -48,7 +43,7 @@ void setup() {
   String file = musicDirectory + groove + fileExtension_mp3; //relative pathway or directory
   println( file );
   //Create a FOR loop to loadFile() a changing songName
-  playList[ currentSong ] = minim.loadfile( file ); //ERROR: Verify Spelling & Library installed, Sketch / Import Library
+  playList[ currentSong ] = minim.loadFile( file ); //ERROR: Verify Spelling & Library installed, Sketch / Import Library
   //Music Testing
   playList[currentSong].play();
   //
