@@ -7,8 +7,10 @@ import ddf.minim.ugens.*;
 //
 //Global Variables
 Minim minim;
-int numberOfSongs = 8;
+int numberOfSongs = 1;
+//int numberOfSoundEffects = ???
 AudioPlayer[] playList = new AudioPlayer[ numberOfSongs ];
+//AudioPlayer[] soundEffects = new AudioPlayer[ numberOfSoundEffects ];
 int currentSong = numberOfSongs - numberOfSongs; //ZERO
 //
 float musicMenuX, musicMenuY, musicMenuWidth, musicMenuHeight;
@@ -24,8 +26,12 @@ void setup() {
   musicMenuWidth = appWidth*1/2;
   musicMenuHeight = appHeight*1/2;
   //
-  //rect(X, Y Width, Height);
+  //rect(X, Y, Width, Height);
   rect(musicMenuX, musicMenuY, musicMenuWidth, musicMenuHeight);
+  //rect(imageX, imageY, imageWidth, imageHeight);
+  //rect(loopInfiniteX, loopInfiniteY, loopInfiniteWidth, loopInfiniteHeight);
+  //rect(stopX, stopY, stopWidth, stopHeight);
+  //rect(soundEffectsX, soundEffectsY, soundEffectsWidth, soundEffectsHeight);
   //
   //Music Loading - STRUCTURED Review
   minim = new Minim(this);
@@ -34,18 +40,18 @@ void setup() {
   String musicPathway = "Music/";
   //Note: Download music and sound effects, then design your player with images, text, and 2D shapes
   //See Google Search: Atari pong logo free image download
-  String groove = "groove";
+  String pongWorld = "Pong World";
   //Add all files, CS20 Review is special OS Java Library
   //Including the reading of the number of files in the array
   String fileExtension_mp3 = ".mp3";
   //
   String musicDirectory = "../../../../" + musicPathway;
-  String file = musicDirectory + groove + fileExtension_mp3; //relative pathway or directory
+  String file = musicDirectory + pongWorld + fileExtension_mp3; //relative pathway or directory
   println( file );
   //Create a FOR loop to loadFile() a changing songName
   playList[ currentSong ] = minim.loadFile( file ); //ERROR: Verify Spelling & Library installed, Sketch / Import Library
   //Music Testing
-  playList[currentSong].play();
+  //playList[currentSong].play();
   //
 } //End setup
 //
@@ -60,9 +66,9 @@ void keyPressed() {
    Note: CAP Lock with ||
    if ( key==? || key==? ) ;
    */
-  if ( key=='P' || key=='p' ) playList[currentSong].play(); //Simple Play, no double tap possible
+  //if ( key=='P' || key=='p' ) playList[currentSong].play(); //Simple Play, no double tap possible
   //
-  //if ( key=='P' || key=='p' ) song[currentSong].loop(0); //Simple Play, double tap possible
+  if ( key=='P' || key=='p' ) playList[currentSong].loop(); //Simple Play, double tap possible
   /* Note: double tap is automatic rewind, no pause
    Symbol is two triangles
    This changes what the button might become after it is pressed
