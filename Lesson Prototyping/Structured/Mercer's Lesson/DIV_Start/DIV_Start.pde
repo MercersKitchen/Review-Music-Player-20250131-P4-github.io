@@ -4,6 +4,10 @@
 //
 //Global Variables
 float musicMenuX, musicMenuY, musicMenuWidth, musicMenuHeight;
+float imageX, imageY, imageWidth, imageHeight;
+float playInfiniteX, playInfiniteY, playInfiniteWidth, playInfiniteHeight;
+float stopX, stopY, stopWidth, stopHeight;
+float soundEffectsX, soundEffectsY, soundEffectsWidth, soundEffectsHeight;
 //
 void setup() {
   //Display
@@ -15,9 +19,32 @@ void setup() {
   musicMenuY = appHeight*1/4;
   musicMenuWidth = appWidth*1/2;
   musicMenuHeight = appHeight*1/2;
+  
+  imageX = musicMenuX;
+  imageY = musicMenuY;
+  imageWidth = musicMenuWidth*1/2;
+  imageHeight = musicMenuHeight;
+  /*
+  playInfiniteX = musicMenuX + musicMenuWidth*1/2;
+  playInfiniteY = musicMenuY + musicMenuHeight;
+  playInfiniteWidth = imageWidth;
+  playInfiniteHeight = musicMenuY + musicMenuHeight*1/3;
+  stopX = musicMenuX + musicMenuWidth*1/2;
+  stopY = musicMenuY + musicMenuHeight*1/3;
+  stopWidth = imageWidth;
+  stopHeight = musicMenuY + musicMenuHeight*1/3;
+  soundEffectsX = musicMenuX + musicMenuWidth*1/2;
+  soundEffectsY = musicMenuY + musicMenuHeight*2/3;
+  soundEffectsWidth = imageWidth;
+  soundEffectsHeight = musicMenuY + musicMenuHeight*1/3;
+  */
   //
-  //rect(X, Y Width, Height);
+  //rect(X, Y, Width, Height);
   rect(musicMenuX, musicMenuY, musicMenuWidth, musicMenuHeight);
+  rect(imageX, imageY, imageWidth, imageHeight);
+  rect(playInfiniteX, playInfiniteY, playInfiniteWidth, playInfiniteHeight);
+  rect(stopX, stopY, stopWidth, stopHeight);
+  rect(soundEffectsX, soundEffectsY, soundEffectsWidth, soundEffectsHeight);
   //
 } //End setup
 //
