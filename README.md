@@ -44,3 +44,4 @@ Combine with this repository
 
 ---
 
+See: https://github.com/MercersKitchen/Delete-Music-Player-Notes
