@@ -15,27 +15,15 @@ void setup() {
   int appWidth = displayWidth;
   int appHeight = displayHeight;
   //
-  musicMenuX = appWidth*1/4;
-  musicMenuY = appHeight*1/4;
+  //Population
   musicMenuWidth = appWidth*1/2;
-  musicMenuHeight = appHeight*1/2;
-  
-  imageX = musicMenuX;
-  imageY = musicMenuY;
-  imageWidth = musicMenuWidth*1/2;
-  imageHeight = musicMenuHeight;
-  playInfiniteX = musicMenuX + musicMenuWidth*1/2;
-  playInfiniteY = musicMenuY;
-  playInfiniteWidth = imageWidth;
-  playInfiniteHeight = musicMenuHeight*1/3;
-  stopX = musicMenuX + musicMenuWidth*1/2;
-  stopY = musicMenuY + musicMenuHeight*1/3;
-  stopWidth = imageWidth;
-  stopHeight = musicMenuHeight*1/3;
-  soundEffectsX = musicMenuX + musicMenuWidth*1/2;
-  soundEffectsY = musicMenuY + musicMenuHeight*2/3;
-  soundEffectsWidth = imageWidth;
-  soundEffectsHeight = musicMenuHeight*1/3;
+  soundEffectsWidth = stopWidth = playInfiniteWidth = imageWidth = imageX = musicMenuX = appWidth*1/4;
+  soundEffectsX = stopX = playInfiniteX = musicMenuX + appWidth*1/4;
+  imageHeight = musicMenuHeight = appHeight*1/2;
+  imageY = playInfiniteY = musicMenuY = appHeight*1/4;
+  soundEffectsHeight = stopHeight = playInfiniteHeight = appHeight*1/6;
+  soundEffectsY = musicMenuY + appHeight*1/3;
+  stopY = musicMenuY + appHeight*1/6;
   //
   //rect(X, Y, Width, Height);
   rect(musicMenuX, musicMenuY, musicMenuWidth, musicMenuHeight);
