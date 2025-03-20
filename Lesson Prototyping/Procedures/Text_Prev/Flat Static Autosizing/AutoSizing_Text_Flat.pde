@@ -10,7 +10,7 @@
  - CAUTION: this will change text size throughout all boxes
  - Might need to hardcode media tolerances (2x bigger, etc.)
  - If text(width > rect(width), decrease font size
- 
+ fontSize
  */
 
 fullScreen();
