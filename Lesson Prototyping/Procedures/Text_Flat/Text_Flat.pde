@@ -4,7 +4,7 @@
 fullScreen();
 int appWidth = displayWidth;
 int appHeight = displayHeight;
-String title = "12345678901234567890"; //Add 'characters' to see when STRING is too long, i.e. 12345678901
+String title = "1234567890123456789012345"; //Add 'characters' to see when STRING is too long, i.e. 12345678901
 float rectWidth = appWidth*1/2;
 float rectHeight = appHeight*1/10;
 rect (appWidth*1/4, appHeight*1/4, rectWidth, rectHeight); //Title Rectangle
@@ -27,14 +27,18 @@ int interationCounter=0;
 for ( float i=1.0; fontSize/rectHeight > fontAspectRatio_ArialBlack; i=1-accuracy) {
   fontSize = fontSize*i;
   //debugger for Program Speed
-  interationCounter++;
-  println("For " + fontSize + "  " + interationCounter);
+  //interationCounter++;
+  //println("For " + fontSize + "  " + interationCounter);
 } //End Font Calculator
 textSize (fontSize); //Manditory for textWidth() Calculation
-println( textWidth(title), rectWidth ); //debugging unseen characters
-for ( float i=1.0; textWidth(title) > rectWidth ; i=1-accuracy ) {
+println( fontSize, textWidth(title), rectWidth ); //debugging unseen characters
+for ( float i=1; textWidth(title) > rectWidth ; i=1-accuracy ) {
+  println("inside");
   fontSize = fontSize*i;
   textSize (fontSize);
+  //debugger for Program Speed
+  interationCounter++;
+  println("For", fontSize, textWidth(title), rectWidth,  + interationCounter);
 }
 println(fontSize); //debugging only
 //
