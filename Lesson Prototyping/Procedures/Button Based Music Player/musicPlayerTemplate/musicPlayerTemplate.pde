@@ -6,12 +6,14 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //
 //Global Variables
+int appWidth, appHeight, shorterSide;
 //
 void setup() {
   //Display
-  //fullScreen();
-  //int appWidth = displayWidth;
-  //int appHeight = displayHeight;
+  fullScreen();
+  appWidth = displayWidth;
+  appHeight = displayHeight;
+  shorterSide = ( displayWidth < displayHeight) ? displayWidth : displayHeight ;
   //
   musicPlayerSetup();
   //Population
@@ -27,6 +29,7 @@ void draw() {
     musicPlayerDraw();
   } else {
     println("Music is Off");
+    //Program Specific Code
   }//End MUSIC Button
   //
 }//End draw
