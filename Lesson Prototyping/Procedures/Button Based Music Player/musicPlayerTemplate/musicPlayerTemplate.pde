@@ -24,6 +24,8 @@ void setup() {
 }//End setup
 //
 void draw() {
+  background(dayMode);
+  rect(musicButtonX, musicButtonY, musicButtonWidth, musicButtonHeight);
   if ( musicButton==true ) {
     //MUSIC Player Code
     musicPlayerDraw();
