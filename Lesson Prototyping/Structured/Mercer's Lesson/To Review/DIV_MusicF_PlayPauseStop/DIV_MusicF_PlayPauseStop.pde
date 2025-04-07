@@ -59,19 +59,8 @@ void setup() {
 } //End setup
 //
 void draw() {
-  /*
-  if ( stopButtonTimer!=0 && ) {
-   stopButtonTimer
-   //
-   resetStopVariables=true;
-   } else {
-   if ( resetStopVariables == true ) {
-   
-   
-   resetStopVariables=false;
-   }
-   }
-   */
+  //AUTO-Play when not playing if button or key NOT pressed
+  //Include Autoplay
 } //End draw
 //
 void mousePressed() {
@@ -79,6 +68,7 @@ void mousePressed() {
 //
 void keyPressed() {
   if ( key=='P' || key=='p' ) {
+    //Suspend Autoplay wth Boolean, engage it when playing againp
     if ( playList[currentSong].isPlaying() ) {
       println("I am paused");
       playList[currentSong].pause();
@@ -96,7 +86,13 @@ void keyPressed() {
         stopTimeStamp=0; //ERROR: inifinite loop of stopTimeStamp not being set, thus always stopped
         println("I am stopped");
       } else {
-        playList[currentSong].play();
+        //When the song finishes, you must rewind it or it will not play
+        if ( playList[currentSong].position() > playList[currentSong].length()*0.9 ) {
+          playList[currentSong].rewind();
+          playList[currentSong].play();
+        } else {
+          playList[currentSong].play();
+        }
         println("I am playing");
       }
     }
