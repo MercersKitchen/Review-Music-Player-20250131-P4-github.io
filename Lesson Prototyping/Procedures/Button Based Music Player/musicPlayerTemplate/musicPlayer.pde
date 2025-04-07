@@ -47,8 +47,8 @@ void musicPlayerSetup() {
   println( file );
   //Create a FOR loop to loadFile() a changing songName
   playList[ currentSong ] = minim.loadFile( file ); //ERROR: Verify Spelling & Library installed, Sketch / Import Library
-  //Music Testing
-  playList[currentSong].play();
+  //
+  //playList[currentSong].play(); //Music Testing ONLY
   //
 }//End setup
 //
@@ -62,6 +62,14 @@ void musicPlayerMousePressed() {
   if ( mouseX>musicButtonX && mouseX<musicButtonX+musicButtonWidth && mouseY>musicButtonY && mouseY<musicButtonY+musicButtonHeight ) {
     musicButtonSwitch();
   }
+  //
+  //Activates the Music Menu on Mouse Pressed
+  if (  musicButton==true ) {
+    //IFs for Music Menu MouseX&Y
+  } else {
+    //Regular Program overlapping Music Menu
+  }
+  //
 }//End mousePressed
 //
 void musicPlayerKeyPressed() {
@@ -75,100 +83,109 @@ void musicPlayerKeyPressed() {
    if ( key==? || key==? ) ;
    */
   //if ( key=='P' || key=='p' ) playList[currentSong].play(); //Simple Play, no double tap possible
+  //if ( key=='P' || key=='p' ) playList[currentSong].loop(0); //Simple Play, double tap possible
   //
-  if ( key=='P' || key=='p' ) playList[currentSong].loop(); //Simple Play, double tap possible
-  /* Note: double tap is automatic rewind, no pause
-   Symbol is two triangles
-   This changes what the button might become after it is pressed
-   */
-  //if ( key=='S' || key=='s' ) song[currentSong].pause(); //Simple Stop, no double taps
-  //
-  if ( key=='S' | key=='s' ) {
-    if ( playList[currentSong].isPlaying() ) {
-      playList[currentSong].pause(); //single tap
-    } else {
-      playList[currentSong].rewind(); //double tap
-    }
-  }
-  if ( key=='L' || key=='l' ) playList[currentSong].loop(1); // Loop ONCE: Plays, then plays again, then stops & rewinds
-  if ( key=='K' || key=='k' ) playList[currentSong].loop(); // Loop Infinitely //Parameter: BLANK or -1
-  if ( key=='F' || key=='f' ) playList[currentSong].skip( 10000 ); // Fast Forward, Rewind, & Play Again //Parameter: milliseconds
-  if ( key=='R' || key=='r' ) playList[currentSong].skip( -10000 ); // Fast Reverse & Play //Parameter: negative numbers
-  if ( key=='M' || key=='m' ) { // MUTE
-    //
-    //MUTE Behaviour: stops electricty to speakers, does not stop file
-    //NOTE: MUTE has NO built-in PUASE button, NO built-in rewind button
-    //ERROR: if song near end of file, user will not know song is at the end
-    //Known ERROR: once song plays, MUTE acts like it doesn't work
-    if ( playList[currentSong].isMuted() ) {
-      //ERROR: song might not be playing
-      //CATCH: ask .isPlaying() or !.isPlaying()
-      playList[currentSong].unmute();
-    } else {
-      //Possible ERROR: Might rewind the song
-      playList[currentSong].mute();
-    }
-  }
-  if ( key=='O' || key=='o' ) { // Pause
-    //
+  if ( key=='P' || key=='p' ) {
     if ( playList[currentSong].isPlaying() ) {
       playList[currentSong].pause();
     } else {
       playList[currentSong].play();
     }
   }
-  if ( key==CODED || keyCode==ESC ) exit(); // QUIT //UP
-  if ( key=='Q' || key=='q' ) exit(); // QUIT
-  //
-  if ( key=='N' || key=='n' ) { // NEXT //See .txt for starter hint
-    if ( playList[currentSong].isPlaying() ) {
-      playList[currentSong].pause();
-      playList[currentSong].rewind();
-      //
-      if ( currentSong==numberOfSongs-1 ) {
-        currentSong = 0;
+    //
+    /* Note: double tap is automatic rewind, no pause
+     Symbol is two triangles
+     This changes what the button might become after it is pressed
+     */
+    //if ( key=='S' || key=='s' ) song[currentSong].pause(); //Simple Stop, no double taps
+    //
+    if ( key=='S' | key=='s' ) {
+      if ( playList[currentSong].isPlaying() ) {
+        playList[currentSong].pause(); //single tap
       } else {
-        currentSong++;
+        //STOP Function
+        playList[currentSong].rewind(); //double tap
       }
-      playList[currentSong].play();
-    } else {
-      //
-      playList[currentSong].rewind();
-      //
-      if ( currentSong==numberOfSongs-1 ) {
-        currentSong = 0;
-      } else {
-        currentSong++;
-      }
-      // NEXT will not automatically play the song
-      //song[currentSong].play();
     }
-  }
-  //if ( key=='P' || key=='p' ) ; // Previous //Students to finish
-  //
-  //if ( key=='S' || key=='s' ) ; // Shuffle - PLAY (Random)
-  //Note: will randomize the currentSong number
-  //Caution: random() is used very often
-  //Question: how does truncating decimals affect returning random() floats
-  /*
+    if ( key=='O' || key=='o' ) { // Pause NOTE: repeats PLAY BUTTON
+      //
+      if ( playList[currentSong].isPlaying() ) {
+        playList[currentSong].pause();
+      } else {
+        playList[currentSong].play();
+      }
+    }
+    if ( key=='L' || key=='l' ) playList[currentSong].loop(1); // Loop ONCE: Plays, then plays again, then stops & rewinds
+    if ( key=='K' || key=='k' ) playList[currentSong].loop(); // Loop Infinitely //Parameter: BLANK or -1
+    if ( key=='F' || key=='f' ) playList[currentSong].skip( 10000 ); // Fast Forward, Rewind, & Play Again //Parameter: milliseconds
+    if ( key=='R' || key=='r' ) playList[currentSong].skip( -10000 ); // Fast Reverse & Play //Parameter: negative numbers
+    if ( key=='W' || key=='w' ) { // MUTE, upsidedown M
+      //
+      //MUTE Behaviour: stops electricty to speakers, does not stop file
+      //NOTE: MUTE has NO built-in PUASE button, NO built-in rewind button
+      //ERROR: if song near end of file, user will not know song is at the end
+      //Known ERROR: once song plays, MUTE acts like it doesn't work
+      if ( playList[currentSong].isMuted() ) {
+        //ERROR: song might not be playing
+        //CATCH: ask .isPlaying() or !.isPlaying()
+        playList[currentSong].unmute();
+      } else {
+        //Possible ERROR: Might rewind the song
+        playList[currentSong].mute();
+      }
+    }
+    if ( key==CODED || keyCode==ESC ) exit(); // QUIT //UP
+    if ( key=='Q' || key=='q' ) exit(); // QUIT
+    //
+    if ( key=='N' || key=='n' ) { // NEXT //See .txt for starter hint
+      if ( playList[currentSong].isPlaying() ) {
+        playList[currentSong].pause();
+        playList[currentSong].rewind();
+        //
+        if ( currentSong==numberOfSongs-1 ) {
+          currentSong = 0;
+        } else {
+          currentSong++;
+        }
+        playList[currentSong].play();
+      } else {
+        //
+        playList[currentSong].rewind();
+        //
+        if ( currentSong==numberOfSongs-1 ) {
+          currentSong = 0;
+        } else {
+          currentSong++;
+        }
+        // NEXT will not automatically play the song
+        //song[currentSong].play();
+      }
+    }
+    //if ( key=='P' || key=='p' ) ; // Previous //Students to finish
+    //
+    //if ( key=='S' || key=='s' ) ; // Shuffle - PLAY (Random)
+    //Note: will randomize the currentSong number
+    //Caution: random() is used very often
+    //Question: how does truncating decimals affect returning random() floats
+    /*
   if ( key=='' || key=='' ) ; // Play-Pause-STOP //Advanced, beyond single buttons
-   - need to have basic GUI complete first
-   */
+     - need to have basic GUI complete first
+     */
+    //
+  }//End keyPressed
   //
-}//End keyPressed
-//
-void musicPlayerGUI( float X, float Y, float Width, float Height ) {
-  fill(nightMode);
-  rect( X, Y, Width, Height );
-  fill(resetDefaultColour);
-}//End Music Player GUI
-//
-void musicButtonSwitch() {
-  if ( musicButton==true ) {
+  void musicPlayerGUI( float X, float Y, float Width, float Height ) {
+    fill(nightMode);
+    rect( X, Y, Width, Height );
+    fill(resetDefaultColour);
+  }//End Music Player GUI
+  //
+  void musicButtonSwitch() {
+    if ( musicButton==true ) {
       musicButton=false;
     } else {
       musicButton=true;
     }
-}//End Music Button Switch
-//
-//End Subprogram Music Player
+  }//End Music Button Switch
+  //
+  //End Subprogram Music Player

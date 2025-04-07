@@ -16,6 +16,7 @@ void setup() {
   shorterSide = ( displayWidth < displayHeight) ? displayWidth : displayHeight ;
   //
   musicPlayerSetup();
+  //
   //Population
   //
   //DIVs
@@ -24,7 +25,7 @@ void setup() {
 }//End setup
 //
 void draw() {
-  background(dayMode);
+  background( dayMode );
   rect(musicButtonX, musicButtonY, musicButtonWidth, musicButtonHeight);
   if ( musicButton==true ) {
     //MUSIC Player Code
@@ -32,6 +33,7 @@ void draw() {
   } else {
     println("Music is Off");
     //Program Specific Code
+    rect( musicMenuX, musicMenuY, musicMenuWidth, musicMenuHeight ); //Overlapping DIV
   }//End MUSIC Button
   //
 }//End draw
