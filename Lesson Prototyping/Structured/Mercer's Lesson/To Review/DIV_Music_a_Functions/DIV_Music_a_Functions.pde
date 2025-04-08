@@ -17,9 +17,10 @@ float musicMenuX, musicMenuY, musicMenuWidth, musicMenuHeight;
 //
 void setup() {
   //Display
-  fullScreen();
-  int appWidth = displayWidth;
-  int appHeight = displayHeight;
+  //fullScreen();
+  size(700, 500);
+  int appWidth = width; //displayWidth
+  int appHeight = height; //displayHeight
   //
   musicMenuX = appWidth*1/4;
   musicMenuY = appHeight*1/4;
@@ -37,7 +38,7 @@ void setup() {
   minim = new Minim(this);
   //String[] fileName = new String[ numberOfSongs ];
   //Alternate Reading of Array
-  String musicPathway = "Music/";
+  String musicPathway = "Music Pong/";
   //Note: Download music and sound effects, then design your player with images, text, and 2D shapes
   //See Google Search: Atari pong logo free image download
   String pongWorld = "Pong World";
@@ -94,7 +95,7 @@ void keyPressed() {
   if ( key=='K' || key=='k' ) playList[currentSong].loop(); // Loop Infinitely //Parameter: BLANK or -1
   if ( key=='F' || key=='f' ) playList[currentSong].skip( 10000 ); // Fast Forward, Rewind, & Play Again //Parameter: milliseconds
   if ( key=='R' || key=='r' ) playList[currentSong].skip( -10000 ); // Fast Reverse & Play //Parameter: negative numbers
-  if ( key=='M' || key=='m' ) { // MUTE
+  if ( key=='W' || key=='w' ) { // MUTE
     //
     //MUTE Behaviour: stops electricty to speakers, does not stop file
     //NOTE: MUTE has NO built-in PUASE button, NO built-in rewind button

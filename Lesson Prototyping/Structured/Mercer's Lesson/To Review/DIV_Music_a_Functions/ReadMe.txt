@@ -1,6 +1,14 @@
-NEXT ??
-Student to complete PREVOIUS
 
----
-
-Do Not use for Auto-play
+P: play
+O: pause
+S: Stop
+L: loop once
+K: loop infinity
+F: fast rewind
+R: fast rewind
+W: Mute
+ESC: Quit
+Q: Quit
+N: Next
+B: previous
+S: Shuffle
