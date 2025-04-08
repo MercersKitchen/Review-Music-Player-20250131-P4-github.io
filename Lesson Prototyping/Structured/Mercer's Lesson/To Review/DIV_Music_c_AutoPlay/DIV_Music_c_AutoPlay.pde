@@ -60,7 +60,7 @@ void setup() {
 } //End setup
 //
 void draw() {
-  if ( playList[currentSong].isPlaying() == false && deactivateAutoPlay==false) {
+  if ( playList[currentSong].isPlaying()==false && deactivateAutoPlay==false) {
     playList[currentSong].loop(0);
     //Note: deactivateAutoPlay gives music function control to buttons & keyboard
     //AUTO-Play currently repeats one song
@@ -95,16 +95,19 @@ void keyPressed() {
         //When the song finishes (within 90%), you must rewind it or it will not play
         if ( playList[currentSong].position() > playList[currentSong].length()*0.9 ) {
           playList[currentSong].rewind();
-          playList[currentSong].play();
-          deactivateAutoPlay=false;
+          activeAutoPlay();
         } else {
-          playList[currentSong].play();
-          deactivateAutoPlay=false;
+          activeAutoPlay();
         }
         println("I am playing");
       }
     }
   }
 } //End keyPressed
+//
+void activeAutoPlay() {
+  playList[currentSong].play();
+  deactivateAutoPlay=false;
+}//End Activate Auto Play
 //
 // End Main Program
