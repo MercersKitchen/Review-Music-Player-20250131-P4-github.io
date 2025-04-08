@@ -59,8 +59,7 @@ void setup() {
 } //End setup
 //
 void draw() {
-  //AUTO-Play when not playing if button or key NOT pressed
-  //Include Autoplay
+  //Empty Draw, similar to .noloop()
 } //End draw
 //
 void mousePressed() {
@@ -68,7 +67,6 @@ void mousePressed() {
 //
 void keyPressed() {
   if ( key=='P' || key=='p' ) {
-    //Suspend Autoplay wth Boolean, engage it when playing againp
     if ( playList[currentSong].isPlaying() ) {
       println("I am paused");
       playList[currentSong].pause();
@@ -94,21 +92,6 @@ void keyPressed() {
           playList[currentSong].play();
         }
         println("I am playing");
-      }
-    }
-    if ( key=='S' | key=='s' ) {
-      if ( playList[currentSong].isPlaying() ) {
-        playList[currentSong].pause(); //single tap
-      } else {
-        playList[currentSong].rewind(); //double tap
-      }
-    }
-    if ( key=='O' || key=='o' ) { // Pause
-      //
-      if ( playList[currentSong].isPlaying() ) {
-        playList[currentSong].pause();
-      } else {
-        playList[currentSong].play();
       }
     }
   }

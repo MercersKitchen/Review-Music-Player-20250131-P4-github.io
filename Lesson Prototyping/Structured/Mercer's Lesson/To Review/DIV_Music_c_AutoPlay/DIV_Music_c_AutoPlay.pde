@@ -16,6 +16,7 @@ int currentSong = numberOfSongs - numberOfSongs; //ZERO
 float musicMenuX, musicMenuY, musicMenuWidth, musicMenuHeight;
 //
 int stopButtonTimer=0, stopTimer=5, stopTimeStamp=0;
+Boolean deactivateAutoPlay=false;
 //
 void setup() {
   //Display
@@ -59,11 +60,12 @@ void setup() {
 } //End setup
 //
 void draw() {
-  if ( playList[currentSong].isPlaying() == false) {
+  if ( playList[currentSong].isPlaying() == false && deactivateAutoPlay==false) {
     playList[currentSong].loop(0);
+    //Note: deactivateAutoPlay gives music function control to buttons & keyboard
+    //AUTO-Play currently repeats one song
+    //Including part of NEXT will autoplay multiple songs
   }
-  //AUTO-Play when not playing if button or key NOT pressed
-  //Include Autoplay
 } //End draw
 //
 void mousePressed() {
@@ -75,6 +77,7 @@ void keyPressed() {
     if ( playList[currentSong].isPlaying() ) {
       println("I am paused");
       playList[currentSong].pause();
+      deactivateAutoPlay=true;
       stopButtonTimer = second(); //Returns 0-59
       stopTimeStamp = stopButtonTimer + stopTimer; //Adds the 5 second delay
       //Adjusts for 5s delay above 55s, i.e. 56+5=60 when 60 is not possible
@@ -93,25 +96,12 @@ void keyPressed() {
         if ( playList[currentSong].position() > playList[currentSong].length()*0.9 ) {
           playList[currentSong].rewind();
           playList[currentSong].play();
+          deactivateAutoPlay=false;
         } else {
           playList[currentSong].play();
+          deactivateAutoPlay=false;
         }
         println("I am playing");
-      }
-    }
-    if ( key=='S' | key=='s' ) {
-      if ( playList[currentSong].isPlaying() ) {
-        playList[currentSong].pause(); //single tap
-      } else {
-        playList[currentSong].rewind(); //double tap
-      }
-    }
-    if ( key=='O' || key=='o' ) { // Pause
-      //
-      if ( playList[currentSong].isPlaying() ) {
-        playList[currentSong].pause();
-      } else {
-        playList[currentSong].play();
       }
     }
   }
