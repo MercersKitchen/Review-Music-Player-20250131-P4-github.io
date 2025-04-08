@@ -73,6 +73,14 @@ void keyPressed() {
    Symbol is two triangles
    This changes what the button might become after it is pressed
    */
+  if ( key=='O' || key=='o' ) { // Pause
+    //
+    if ( playList[currentSong].isPlaying() ) {
+      playList[currentSong].pause();
+    } else {
+      playList[currentSong].play();
+    }
+  }
   //if ( key=='S' || key=='s' ) song[currentSong].pause(); //Simple Stop, no double taps
   //
   if ( key=='S' | key=='s' ) {
@@ -99,14 +107,6 @@ void keyPressed() {
     } else {
       //Possible ERROR: Might rewind the song
       playList[currentSong].mute();
-    }
-  }
-  if ( key=='O' || key=='o' ) { // Pause
-    //
-    if ( playList[currentSong].isPlaying() ) {
-      playList[currentSong].pause();
-    } else {
-      playList[currentSong].play();
     }
   }
   if ( key==CODED || keyCode==ESC ) exit(); // QUIT //UP
