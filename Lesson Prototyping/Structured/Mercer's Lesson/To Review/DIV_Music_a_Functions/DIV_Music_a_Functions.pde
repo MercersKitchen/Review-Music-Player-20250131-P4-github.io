@@ -68,7 +68,7 @@ void keyPressed() {
    */
   //if ( key=='P' || key=='p' ) playList[currentSong].play(); //Simple Play, no double tap possible
   //
-  if ( key=='P' || key=='p' ) playList[currentSong].loop(); //Simple Play, double tap possible
+  if ( key=='P' || key=='p' ) playList[currentSong].loop(0); //Simple Play, double tap possible
   /* Note: double tap is automatic rewind, no pause
    Symbol is two triangles
    This changes what the button might become after it is pressed
