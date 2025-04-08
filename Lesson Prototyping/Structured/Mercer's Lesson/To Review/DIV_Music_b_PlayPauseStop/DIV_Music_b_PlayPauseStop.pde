@@ -15,14 +15,14 @@ int currentSong = numberOfSongs - numberOfSongs; //ZERO
 //
 float musicMenuX, musicMenuY, musicMenuWidth, musicMenuHeight;
 //
-int stopButtonTimer=0, stopTimer=5, stopTimeStamp=0, stopCorrection=0;
-Boolean resetStopVariables=false;
+int stopButtonTimer=0, stopTimer=5, stopTimeStamp=0;
 //
 void setup() {
   //Display
-  fullScreen();
-  int appWidth = displayWidth;
-  int appHeight = displayHeight;
+  size(700, 500); 
+  //fullScreen();
+  int appWidth = width; //displayWidth
+  int appHeight = height; //displayHeight
   //
   musicMenuX = appWidth*1/4;
   musicMenuY = appHeight*1/4;
@@ -86,7 +86,7 @@ void keyPressed() {
         stopTimeStamp=0; //ERROR: inifinite loop of stopTimeStamp not being set, thus always stopped
         println("I am stopped");
       } else {
-        //When the song finishes, you must rewind it or it will not play
+        //When the song finishes (within 90%), you must rewind it or it will not play
         if ( playList[currentSong].position() > playList[currentSong].length()*0.9 ) {
           playList[currentSong].rewind();
           playList[currentSong].play();
