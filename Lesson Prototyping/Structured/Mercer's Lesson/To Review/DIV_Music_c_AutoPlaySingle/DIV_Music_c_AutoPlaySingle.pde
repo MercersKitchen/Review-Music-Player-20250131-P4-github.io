@@ -41,7 +41,7 @@ void setup() {
   minim = new Minim(this);
   //String[] fileName = new String[ numberOfSongs ];
   //Alternate Reading of Array
-  String musicPathway = "Music/";
+  String musicPathway = "Music Pong/";
   //Note: Download music and sound effects, then design your player with images, text, and 2D shapes
   //See Google Search: Atari pong logo free image download
   String pongWorld = "Pong World";
