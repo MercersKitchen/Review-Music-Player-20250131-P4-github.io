@@ -56,7 +56,7 @@ void setup() {
   //Including the reading of the number of files in the array
   String fileExtension_mp3 = ".mp3";
   //
-  String musicDirectory = "../../../../../" + musicPathway;
+  String musicDirectory = "../../../../../" + musicPathway; //Relative Pathway ( not absolute, sketchPath() )
   String file = musicDirectory + beatYourCompetition + fileExtension_mp3; //relative pathway or directory
   println( file );
   //Create a FOR loop to loadFile() a changing songName, Create a Procedure with two Arrays first
@@ -106,10 +106,10 @@ void setup() {
 } //End setup
 //
 void draw() {
-  if ( playList[currentSong].isPlaying()==false && deactivateAutoPlay==false) {
+  if ( playList[currentSong].isPlaying()==false && deactivateAutoPlay==false ) {
     if ( firstTime==true) {
       playList[currentSong].loop(0);
-      firstTime=false;
+      firstTime=false; //Similar to WHILE
     } else {
       endOfPlayListCheck();
     }
