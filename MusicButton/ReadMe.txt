@@ -1,2 +1,2 @@
 
-Intermedate / Advanced Review of Processing
+Intermediate / Advanced Review of Processing
