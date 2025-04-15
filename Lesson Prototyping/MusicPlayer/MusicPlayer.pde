@@ -54,8 +54,7 @@ void setup() {
   //Create a FOR loop to loadFile() a changing songName
   playList[ currentSong ] = minim.loadFile( file ); //ERROR: Verify Spelling & Library installed, Sketch / Import Library
   //Music Testing
-  playList[currentSong].play();
-  //
+  //playList[currentSong].play();
   //
   //Population
   musicMenuX = appWidth*1/4;
