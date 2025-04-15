@@ -60,7 +60,7 @@ void setup() {
 } //End setup
 //
 void draw() {
-  if ( playList[currentSong].isPlaying()==false && deactivateAutoPlay==false) {
+  if ( playList[currentSong].isPlaying()==false && deactivateAutoPlay==false ) {
     playList[currentSong].loop(0); //loops song ZERO times, only demonstrates .loop is possible
     //Note: deactivateAutoPlay gives music function control to buttons & keyboard
     //AUTO-Play currently repeats one song
