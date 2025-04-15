@@ -217,6 +217,7 @@ void activeAutoPlay() {
   playList[currentSong].play();
   deactivateAutoPlay=false;
 }//End Activate Auto Play
+//
 void deactiveAutoPlay() {
   playList[currentSong].pause();
   deactivateAutoPlay=true;
