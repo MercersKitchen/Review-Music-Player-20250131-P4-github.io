@@ -1,5 +1,16 @@
 // Text: from Static to Procedural
 //
+//Global Variables
+//
+void setup() {} //End setup
+//
+void draw() {} //End draw
+//
+void mousePressed() {} //End mousepressed
+//
+void keyPressed() {} //End keyPressed
+//
+//End MAIN
 String title = "Wahoo!";
 String footer = "Seim is Awesome!";
 //
