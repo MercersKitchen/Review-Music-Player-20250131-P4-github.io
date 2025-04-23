@@ -1,10 +1,11 @@
 // Text: from Static to Procedural
 //
 //Global Variables
-PFont appFont;
-float fontSize;
-String title = "Wahoo!";
-String footer = "Seim is Awesome!";
+int shorterSide;
+float titleX, titleY;
+float footerX, footerY;
+float[] rectDIVWidth = new float[2];
+float[] rectDIVHeight = new float[2];
 //
 void setup() {
   //Display
@@ -12,42 +13,25 @@ void setup() {
   size(700, 500);
   int appWidth = width; //displayWidth
   int appHeight = height; //displayHeight
-  int shorterSide = ( appWidth >= appHeight ) ? appHeight : appWidth ; //All 3 Geometries
+  shorterSide = ( appWidth >= appHeight ) ? appHeight : appWidth ; //All 3 Geometries
   //
-  /* Fonts from OS
-   println("Start of Console");
-   String[] fontList = PFont.list(); //To list all fonts available on system
-   printArray(fontList); //For listing all possible fonts to choose, then createFont
-   */
-  appFont = createFont("Harrington", shorterSide); //Verify font exists
-  //Tools / Create Font / Find Font / Do Not Press "OK", known bug
+  textSetup1();
   //
   //DIV for Text, Population
-  float titleX, titleY, titleWidth, titleHeight;
-  float footerX, footerY, footerWidth, footerHeight;
   titleX = appWidth*1/4;
   titleY = appHeight*1/4;
-  titleWidth = appWidth*1/2;
-  titleHeight = appHeight*1/10;
+  rectDIVWidth[0] = appWidth*1/2;
+  rectDIVHeight[0] = appHeight*1.5/10;
   footerX = appWidth*1/4;
   footerY = appHeight*3/4;
-  footerWidth = appWidth*1/2;
-  footerHeight = appHeight*1/10;
-  rect(titleX, titleY, titleWidth, titleHeight);
-  rect(footerX, footerY, footerWidth, footerHeight);
+  rectDIVWidth[1] = appWidth*1/2;
+  rectDIVHeight[1] = appHeight*1/10;
+  rect(titleX, titleY, rectDIVWidth[0], rectDIVHeight[0]);
+  rect(footerX, footerY, rectDIVWidth[1], rectDIVHeight[1]);
   //
-  /* Aspect Ratio Manipulations (changes to variables), Font Size relative to rect(Height)
-   - choose Aspect Ratio that must be mutliplied: fontSize/titleHeight
-   - Rewriting fontSize with formulae
-   */
-  float harringtonAspectRatio = fontSize / titleHeight;
-  fontSize = titleHeight * harringtonAspectRatio;
-  //println("Aspect Ratio:", harringtonAspectRatio);
-  textFont(appFont, fontSize); //Manditory, for textWidth()
-  while ( footerWidth < textWidth( footer ) ) {
-    fontSize = fontSize*0.99;
-    textFont(appFont, fontSize); //Manditory, for textWidth()
-  }
+  textSetup2();
+  //
+  
   //println(); //Skip a line
   //
   //Minimum Lines of code to format and draw text with colour
@@ -58,15 +42,15 @@ void setup() {
   textFont(appFont, fontSize); //see variable note
   //textFont() has option to combine font declaration with textSize()
   //Drawing Text
-  text(title, titleX, titleY, titleWidth, titleHeight); //Height Aspect Ratio
-  text(footer, footerX, footerY, footerWidth, footerHeight); //No Wraparound, will not show
+  text(string[0], titleX, titleY, rectDIVWidth[0], rectDIVHeight[0]); //Height Aspect Ratio
+  text(string[1], footerX, footerY, rectDIVWidth[1], rectDIVHeight[1]); //No Wraparound, will not show
   color whiteInk = #FFFFFF;
   fill(whiteInk); //reset
   //
   //Aspect Ratio of Specfic Font, calculations only to be entered in variables above
-  println( "Text Width:", textWidth(title), "v rectWidth:", titleWidth ); //Always smaller or cut off, if text is drawn, always drawn
-  println( "Text Height:", fontSize, "v. rectHeight:", titleHeight ); //largest fontSize that will be draw, relative to rectHeight
-  println( "Harrington Aspect Ratio ( fontSize/rect(height) ):", fontSize/titleHeight ); //Remember casting
+  println( "Text Width:", textWidth(string[0]), "v rectWidth:", rectDIVWidth[0] ); //Always smaller or cut off, if text is drawn, always drawn
+  println( "Text Height:", fontSize, "v. rectHeight:", rectDIVHeight[0] ); //largest fontSize that will be draw, relative to rectHeight
+  println( "Harrington Aspect Ratio ( fontSize/rect(height) ):", fontSize/rectDIVHeight[0] ); //Remember casting
   //
 } //End setup
 //
