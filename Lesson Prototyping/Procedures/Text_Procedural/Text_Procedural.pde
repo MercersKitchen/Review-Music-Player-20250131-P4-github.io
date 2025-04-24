@@ -1,4 +1,8 @@
-// Text: from Static to Procedural
+/* Text: from Static to Procedural
+ - void procedures: grouping code
+ - data structures, arrays to iterate through all values 
+ - purpose: find the smallest font for the entire app
+ */
 //
 //Global Variables
 int shorterSide;
@@ -31,26 +35,11 @@ void setup() {
   //
   textSetup2();
   //
-  
   //println(); //Skip a line
   //
-  //Minimum Lines of code to format and draw text with colour
-  color purpleInk = #2C08FF;
-  fill(purpleInk); //Ink, hexidecimal copied from Color Selector
-  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
-  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
-  textFont(appFont, fontSize); //see variable note
-  //textFont() has option to combine font declaration with textSize()
   //Drawing Text
-  text(string[0], titleX, titleY, rectDIVWidth[0], rectDIVHeight[0]); //Height Aspect Ratio
-  text(string[1], footerX, footerY, rectDIVWidth[1], rectDIVHeight[1]); //No Wraparound, will not show
-  color whiteInk = #FFFFFF;
-  fill(whiteInk); //reset
-  //
-  //Aspect Ratio of Specfic Font, calculations only to be entered in variables above
-  println( "Text Width:", textWidth(string[0]), "v rectWidth:", rectDIVWidth[0] ); //Always smaller or cut off, if text is drawn, always drawn
-  println( "Text Height:", fontSize, "v. rectHeight:", rectDIVHeight[0] ); //largest fontSize that will be draw, relative to rectHeight
-  println( "Harrington Aspect Ratio ( fontSize/rect(height) ):", fontSize/rectDIVHeight[0] ); //Remember casting
+  textDraw(string[0], titleX, titleY, rectDIVWidth[0], rectDIVHeight[0]);
+  textDraw(string[1], footerX, footerY, rectDIVWidth[1], rectDIVHeight[1]);
   //
 } //End setup
 //
