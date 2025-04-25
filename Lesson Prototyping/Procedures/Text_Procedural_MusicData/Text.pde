@@ -25,9 +25,9 @@ void stringVarsEntry() {
   string[1] = "Seim is Awesome!";
 } //End String Varaibles Text Entry
 //
-float fontSizeAlgorithm( float fontSize, int i ) {
+float fontSizeAlgorithm( float fontSize, int i, String text ) {
   fontSize = textHeightAlgorithm( fontSize, i );
-  fontSize = textWidthAlgorithm( fontSize, i );
+  fontSize = textWidthAlgorithm( fontSize, i, text );
   return fontSize;
 } //End Font Size Algorithm
 //
@@ -36,15 +36,15 @@ float textHeightAlgorithm( float fontSize, int i ) {
   return fontSize;
 } //End Text Height Algorithm
 //
-float textWidthAlgorithm( float fontSize, int i) {
+float textWidthAlgorithm( float fontSize, int i, String text) {
   float harringtonAspectRatio = 1.04;
   fontSize = fontSize * harringtonAspectRatio;
   //println("Aspect Ratio:", harringtonAspectRatio);
   //
   textFont(appFont, fontSize); //Manditory, for textWidth()
   float fontSize_temp=fontSize;
-  if ( textWidth( string[i] ) > rectDIVWidth[i] ) {
-    while ( textWidth( string[i] ) > rectDIVWidth[i] ) {
+  if ( textWidth( text ) > rectDIVWidth[i] ) {
+    while ( textWidth( text ) > rectDIVWidth[i] ) {
       fontSize_temp = fontSize_temp*0.99;
       textFont(appFont, fontSize_temp); //Manditory, for textWidth()
     }
