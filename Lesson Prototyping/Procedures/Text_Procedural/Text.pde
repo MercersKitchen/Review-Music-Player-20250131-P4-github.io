@@ -1,17 +1,20 @@
 //Global Variables
 PFont appFont;
-float fontSize;
-String[] string = new String[2];
+float[] fontSize = new float[textDIVs];
+String[] string = new String[textDIVs];
 //
-void textSetup1() {
+void textSetup() {
   /* Fonts from OS
    println("Start of Console");
    String[] fontList = PFont.list(); //To list all fonts available on system
    printArray(fontList); //For listing all possible fonts to choose, then createFont
    */
-  fontSize = shorterSide;
-  appFont = createFont("Harrington", fontSize); //Verify font exists
+  appFont = createFont("Harrington", shorterSide); //Verify font exists
   //Tools / Create Font / Find Font / Do Not Press "OK", known bug
+  //
+  for ( int i=0; i<textDIVs; i++ ) {
+    fontSize[i] = shorterSide;
+  } //End Reading Font Size
   //
   stringVarsEntry();
   //
@@ -22,52 +25,41 @@ void stringVarsEntry() {
   string[1] = "Seim is Awesome!";
 } //End String Varaibles Text Entry
 //
-void textSetup2() {
-  /* Aspect Ratio Manipulations (changes to variables), Font Size relative to rect(Height)
-   - choose Aspect Ratio that must be mutliplied: fontSize/titleHeight
-   - Rewriting fontSize with formulae
-   */
-  fontSize = shorterSide;
-  //
-  textHeightAlgorithm();
-  //
-  textWidthAlgorithm();
-  //
-} // End Text Setup 2
+float fontSizeAlgorithm( float fontSize, int i ) {
+  fontSize = textHeightAlgorithm( fontSize, i );
+  fontSize = textWidthAlgorithm( fontSize, i );
+  return fontSize;
+} //End Font Size Algorithm
 //
-void textHeightAlgorithm() {
-  //Finds the smallest rect(height); might cause issue with text font formatting
-  for ( int i=0; i<rectDIVHeight.length; i++ ) {
-    if ( fontSize > rectDIVHeight[i] ) fontSize = rectDIVHeight[i];
-  }
+float textHeightAlgorithm( float fontSize, int i ) {
+  if ( fontSize > rectDIVHeight[i] ) fontSize = rectDIVHeight[i];
+  return fontSize;
 } //End Text Height Algorithm
 //
-void textWidthAlgorithm() {
+float textWidthAlgorithm( float fontSize, int i) {
   float harringtonAspectRatio = 1.04;
   fontSize = fontSize * harringtonAspectRatio;
   //println("Aspect Ratio:", harringtonAspectRatio);
   //
   textFont(appFont, fontSize); //Manditory, for textWidth()
   float fontSize_temp=fontSize;
-  for ( int i=0; i<rectDIVWidth.length; i++ ) {
-    if ( textWidth( string[i] ) > rectDIVWidth[i] ) {
-      while ( textWidth( string[i] ) > rectDIVWidth[i] ) {
-        fontSize_temp = fontSize_temp*0.99;
-        textFont(appFont, fontSize_temp); //Manditory, for textWidth()
-      }
-      fontSize = fontSize_temp;
+  if ( textWidth( string[i] ) > rectDIVWidth[i] ) {
+    while ( textWidth( string[i] ) > rectDIVWidth[i] ) {
+      fontSize_temp = fontSize_temp*0.99;
+      textFont(appFont, fontSize_temp); //Manditory, for textWidth()
     }
-    textFont(appFont, fontSize);
+    fontSize = fontSize_temp;
   }
+  return fontSize;
 } //End Text Width Algorithm
 //
-void textDraw( String text, float X, float Y, float W, float H ) { //Local Variables
-  preTextDraw();
+void textDraw( float fontSize, String text, float X, float Y, float W, float H ) { //Local Variables
+  preTextDraw( fontSize );
   text(text, X, Y, W, H);
   resettingVariables();
 } //End Text Draw
 //
-void preTextDraw() {
+void preTextDraw( float fontSize) {
   color purpleInk = #2C08FF;
   fill(purpleInk); //Ink, hexidecimal copied from Color Selector
   textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference

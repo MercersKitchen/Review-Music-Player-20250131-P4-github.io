@@ -1,15 +1,17 @@
 /* Text: from Static to Procedural
  - void procedures: grouping code
- - data structures, arrays to iterate through all values 
+ - data structures, arrays to iterate through all values
  - purpose: find the smallest font for the entire app
  */
 //
 //Global Variables
 int shorterSide;
-float titleX, titleY;
-float footerX, footerY;
-float[] rectDIVWidth = new float[2];
-float[] rectDIVHeight = new float[2];
+//
+int textDIVs = 2;
+float[] rectDIVX = new float[textDIVs];
+float[] rectDIVY = new float[textDIVs];
+float[] rectDIVWidth = new float[textDIVs];
+float[] rectDIVHeight = new float[textDIVs];
 //
 void setup() {
   //Display
@@ -19,27 +21,24 @@ void setup() {
   int appHeight = height; //displayHeight
   shorterSide = ( appWidth >= appHeight ) ? appHeight : appWidth ; //All 3 Geometries
   //
-  textSetup1();
-  //
   //DIV for Text, Population
-  titleX = appWidth*1/4;
-  titleY = appHeight*1/4;
-  rectDIVWidth[0] = appWidth*1/2;
+  rectDIVX[0] = rectDIVX[1] = appWidth*1/4; //Decreasing lines of code
+  rectDIVY[0] = appHeight*1/4;
+  rectDIVWidth[0] = rectDIVWidth[1] = appWidth*1/2; //Decreasing lines of code
   rectDIVHeight[0] = appHeight*1.5/10;
-  footerX = appWidth*1/4;
-  footerY = appHeight*3/4;
-  rectDIVWidth[1] = appWidth*1/2;
+  rectDIVY[1] = appHeight*3/4;
   rectDIVHeight[1] = appHeight*1/10;
-  rect(titleX, titleY, rectDIVWidth[0], rectDIVHeight[0]);
-  rect(footerX, footerY, rectDIVWidth[1], rectDIVHeight[1]);
+  for (int i=0; i<textDIVs; i++) {
+    rect(rectDIVX[i], rectDIVY[i], rectDIVWidth[i], rectDIVHeight[i]);
+  } //End Drawing DIVs
   //
-  textSetup2();
+  textSetup();
   //
-  //println(); //Skip a line
-  //
-  //Drawing Text
-  textDraw(string[0], titleX, titleY, rectDIVWidth[0], rectDIVHeight[0]);
-  textDraw(string[1], footerX, footerY, rectDIVWidth[1], rectDIVHeight[1]);
+  //Drawing Text, using Arrays and Data Structures
+  for ( int i=0; i<textDIVs; i++ ) {
+    fontSize[i] = fontSizeAlgorithm( fontSize[i], i );
+    textDraw( fontSize[i], string[i], rectDIVX[i], rectDIVY[i], rectDIVWidth[i], rectDIVHeight[i] );
+  } //End Drawing Text
   //
 } //End setup
 //
